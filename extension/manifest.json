@@ -6,11 +6,53 @@
     "version" : "1.0",
 
     "permissions" : [
-        "tabs", "http://*/*", "https://*/*", "storage"
+        "tabs", "http://*/*", "https://*/*", "storage", "background"
+    ],
+
+    "content_scripts" : [
+        {
+            "matches": ["http://*/*",
+                        "https://*/*"],
+            "js" : ["js/jquery-1.9.1.min.js",
+                    "class.min.js",
+                    "purl.js",
+                    "jquery.min.js"],
+            "run_at": "document_idle"
+        }
     ],
 
     "browser_action" : {
         "default_popup" : "popup.html"
-    }
+    },
 
+    "background": {
+        "scripts": ["eventPage.js"]
+    },
+
+    "web_accessible_resources": [
+        "background_swag.png",
+        "blk_tile.png",
+        "bootstrap.css",
+        "bootstrap.js",
+        "class.min.js",
+        "faded_swag.gif",
+        "flashing_swag.gif",
+        "geocities.css",
+        "geocities.js",
+        "geocities-stars.gif",
+        "glyphicons-halflings.png",
+        "glyhpicons-halfling-white.png",
+        "goth.js",
+        "index.css",
+        "matrix.css",
+        "matrix.jpg",
+        "matrix.js",
+        "obey_swag.gif",
+        "purl.js",
+        "twenties.css",
+        "twenties.js",
+        "wiz_swag.gif"
+    ],
+
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

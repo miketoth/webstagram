@@ -2,43 +2,29 @@
 <html>
 <head>
     <title> Webstagram </title>
-    <script type="text/javascript" src="jquery-1.9.1.min.js"></script>
-    <link   type="text/css" rel="stylesheet" href="bootstrap.css">
-    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-    <link type="text/css" rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="popup_action.js"></script>
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <link   type="text/css" rel="stylesheet" href="css/bootstrap.css">
+    <script type="text/javascript" src="css/bootstrap.js"></script>
+    <script type="text/javascript" src="eventPage.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div>
-        <button class="btn btn-large btn-block" type="button" >Share!</button>
+        <button id="shareButton" class="btn btn-large btn-block stop-it" type="button" >Share!</button>
     </div>
-    <div class="btn-toolbar" style="margin:0;">
-        <div class="btn-group">
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                Style
-                <span class="caret"></span>
+    <div class="btn-toolbar stop-it" style="margin:0;">
+        <div class="btn-group stop-it">
+            <a class="btn dropdown-toggle stop-it" data-toggle="dropdown" href="#">
+                Filters
+                <span class="caret stop-it"></span>
             </a>
-            <ul class="dropdown-menu">
-                <li><a href="js/matrix.js">Matrix</a></li>
-                <li><a href="js/steamPunk.js">SteamPunk</a></li>
-                <li><a href="js/goth.js">Goth</a></li>
-                <li><a href="js/impressionism.js">Impressionism</a></li>
+            <ul class="dropdown-menu stop-it">
+                <li><a id="matrixStyle" class="stop-it" href="#">Matrix</a></li>
+                <li><a id="geocityStyle" class="stop-it" href="#">Geocities</a></li>
+                <li><a id="twentiesStyle" class="stop-it" href="#">1920s</a></li>
+                <li><a id="discoStyle" class="stop-it" href="#">Disco</a></li>
             </ul>
         </div>
-        <div class="btn-group">
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                Filter
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Old school</a></li>
-                <li><a href="#">GeoCities</a></li>
-                <li><a href="#">Twitter Bootstrap</a></li>
-                <li><a href="#">Cats</a></li>
-            </ul>
-        </div>
-</div>
-
-
+    </div>
 </body>
 </html>

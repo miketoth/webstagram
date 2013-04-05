@@ -1,0 +1,84 @@
+html, body, input, div, p
+{
+    background-color: black;
+}
+
+/*Red*/
+.glow0
+{
+    color: #f33 !important;
+    text-shadow: 0 0 5px #f33 !important;
+}
+.glow0.blink
+{
+    color: #faa !important;
+    text-shadow: 0 0 5px #faa !important;
+}
+
+/*Purple*/
+.glow1
+{
+    color: #f5f !important;
+    text-shadow: 0 0 5px #f5f !important;
+}
+.glow1.blink
+{
+    color: #faf !important;
+    text-shadow: 0 0 5px #faf !important;
+}
+
+/*Orange*/
+.glow2
+{
+    color: #F7B136 !important;
+    text-shadow: 0 0 5px #F7B136 !important;
+}
+.glow2.blink
+{
+    color: #D9E01B !important;
+    text-shadow: 0 0 5px #D9E01B !important;
+}
+
+/*Yellow*/
+.glow3
+{
+    color: #ff2 !important;
+    text-shadow: 0 0 5px #ff2 !important;
+}
+.glow3.blink
+{
+    color: #ff9 !important;
+    text-shadow: 0 0 5px #ff9 !important;
+}
+
+/*Green*/
+.glow4
+{
+    color: #2f2 !important;
+    text-shadow: 0 0 5px #2f2 !important;
+}
+.glow4.blink
+{
+    color: #9f9 !important;
+    text-shadow: 0 0 5px #9f9 !important;
+}
+
+/*Blue*/
+.glow5
+{
+    color: #0AFAF6 !important;
+    text-shadow: 0 0 5px #0AFAF6 !important;
+}
+.glow5.blink
+{
+    color: #A6F9FF !important;
+    text-shadow: 0 0 5px #A6F9FF !important;
+}
+
+.blink
+{
+    font-weight: bold;
+}
+
+
+
