@@ -1,4 +1,6 @@
 <?php
+    include 'error_handler.php';
+    
     // Grab our URL
     $url = $_GET['url'];
     $filter = $_GET['filter'];
