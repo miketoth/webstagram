@@ -1,0 +1,11 @@
+html, body
+{
+    background-color: black;
+    color: green;
+    font-family: 'Consolas', 'Courier New', Monospace;
+}
+
+img
+{
+    border: 2px solid green;
+}
