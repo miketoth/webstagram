@@ -1,6 +1,7 @@
 <?php
     // Grab our URL
     $url = $_GET['url'];
+    $filter = $_GET['filter'];
     
     // Append the proper beginnings to it
     if (substr_count($url, 'www.') == 0)
@@ -10,6 +11,12 @@
     
     // Grab the data fromt the site
     $returned_content = get_data($url);
+    
+    if ($filter != 'normal')
+    {
+        $returned_content = str_replace('<head>', '<head><script src="js/libs/jquery.min.js" type="text/javascript"></script>' .
+                                                  '<script src="js/'.$filter.'.js" type="text/javascript"></script>', $returned_content);
+    }
     
     // Print the site to the DOM
     echo $returned_content;
