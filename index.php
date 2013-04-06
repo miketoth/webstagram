@@ -13,6 +13,7 @@
             <option value="geocities">Geocities</option>
             <option value="steampunk">Steampunk</option>
             <option value="bootstrap">Boostrap</option>
+            <option value="goth">Goth</option>
         </select>
         
         <button type="submit">Webstagram!</button>
