@@ -26,6 +26,7 @@
     },
 
     "background": {
+        "background_page": "eventPage.js",
         "scripts": ["eventPage.js"]
     },
 
