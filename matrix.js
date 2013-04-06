@@ -59,7 +59,7 @@
         var floaters = new Array();
         
         // Fix all of the links to stay on our domain
-        jQuery('a:not(.stop-it)').each(function()
+        jQuery('body:not(.stop-it) a:not(.stop-it)').each(function()
         {
             jQuery(this).attr('href', 'webstagram.php?filter=matrix&url=' + escape(jQuery(this).attr('href')));
         });

@@ -6,13 +6,13 @@
     {
        console.log("Style: Bootstrap");
        
-       // Fix all of the links to stay on our domain
-        jQuery('a:not(.stop-it)').each(function()
+        // Fix all of the links to stay on our domain
+        jQuery('body:not(.stop-it) a:not(.stop-it)').each(function()
         {
             jQuery(this).attr('href', 'webstagram.php?filter=bootstrap&url=' + escape(jQuery(this).attr('href')));
         });
         
-        jQuery('body').append('<audio preload="auto" autoplay="autoplay" autobuffer><source src="disco.ogg"><source src="disco.mp3"></audio>')
+        jQuery('body').append('<audio preload="auto" autoplay="autoplay" autobuffer><source src="http://webstagramthis.herokuapp.com/disco.ogg"><source src="http://webstagramthis.herokuapp.com/disco.mp3"></audio>')
         
         randomizeGlow();
         
