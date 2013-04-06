@@ -5,7 +5,7 @@
 .type0 html, body, div, h1, h2, h3, h4, h5, h6, p
 {
     font-family: 'Comic Sans MS', Serif !important; 
-    background-image: url(../img/geocities-stars.gif) !important;
+    background-image: url(geocities-stars.gif) !important;
     color: red;
 }
 

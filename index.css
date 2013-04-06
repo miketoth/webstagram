@@ -2,7 +2,7 @@ html, body
 {
     font-family: ubuntu-condensed, Serif;
     font-weight: normal;
-    background-image: url(../img/bkg_tile.png);
+    background-image: url(bkg_tile.png);
 }
 
 .container
