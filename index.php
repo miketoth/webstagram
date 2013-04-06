@@ -3,7 +3,7 @@
 <html>
 <head>
     <script src="http://use.edgefonts.net/lobster.js"></script>
-    <script src="http://use.edgefonts.net/ropa-sans.js"></script>
+    <script src="http://use.edgefonts.net/ubuntu-condensed.js"></script>
 
     <link href="css/index.css" rel="stylesheet" />
 </head>
@@ -26,9 +26,9 @@
                     <option value="twenties">Twenties</option>
                     <option value="bootstrap">Boostrap</option>
                 </select>
-             
-                <button class="punch" type="submit">Webstagram It!</button>
             </form>
         </div>
+        
+        <button class="punch" type="submit">Webstagram It!</button>
 </body>
 </html>
