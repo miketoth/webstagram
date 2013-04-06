@@ -17,7 +17,6 @@
                this.txt = txt;
                this.id = id;
                this.x = Math.random() * window.innerWidth;
-               console.log("x: " + this.x);
                this.y =  -300 - (Math.random() * window.innerHeight);
                this.fallSpeed = Math.random() * 100 + 20;
                
@@ -94,13 +93,5 @@
                 }    
             });
         }
-        jQuery.cloudinary.config({"cloud_name":"greysonp", "api_key":"876922824362944"});
-        jQuery('img').each(function()
-        {
-           jQuery(this).cloudinary({effect:"hue:50"});
-        });
-        
-        // jQuery('img').cloudinary({effect:"hue:50"});
-            
     });
 })();

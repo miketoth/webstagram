@@ -40,3 +40,8 @@ button
     color: #0f0;
     text-shadow: 0 0 10px #0f0;
 }
+
+img
+{
+    -webkit-filter: hue-rotate(90deg);
+}

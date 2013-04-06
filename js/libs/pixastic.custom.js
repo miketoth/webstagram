@@ -53,37 +53,46 @@ return img;}}else if(Pixastic.Client.isIE()){if(typeof img.__pixastic_org_style!
 img.style.cssText=img.__pixastic_org_style;}},Client:{hasCanvas:hasCanvas,hasCanvasImageData:hasCanvasImageData,hasGlobalAlpha:hasGlobalAlpha,isIE:function(){return!!document.all&&!!window.attachEvent&&!window.opera;}},Actions:{}}})();if(typeof jQuery!="undefined"&&jQuery&&jQuery.fn){jQuery.fn.pixastic=function(action,options){var newElements=[];this.each(function(){if(this.tagName.toLowerCase()=="img"&&!this.complete){return;}
 var res=Pixastic.process(this,action,options);if(res){newElements.push(res);}});if(newElements.length>0)
 return jQuery(newElements);else
-return this;};};Pixastic.Actions.desaturate={process:function(params){var useAverage=!!(params.options.average&&params.options.average!="false");if(Pixastic.Client.hasCanvasImageData()){var data=Pixastic.prepareData(params);var rect=params.options.rect;var w=rect.width;var h=rect.height;var p=w*h;var pix=p*4,pix1,pix2;if(useAverage){while(p--)
+return this;};};Pixastic.Actions.blur={process:function(params){if(typeof params.options.fixMargin=="undefined")
+params.options.fixMargin=true;if(Pixastic.Client.hasCanvasImageData()){var data=Pixastic.prepareData(params);var dataCopy=Pixastic.prepareData(params,true)
+var kernel=[[0,1,0],[1,2,1],[0,1,0]];var weight=0;for(var i=0;i<3;i++){for(var j=0;j<3;j++){weight+=kernel[i][j];}}
+weight=1/(weight*2);var rect=params.options.rect;var w=rect.width;var h=rect.height;var w4=w*4;var y=h;do{var offsetY=(y-1)*w4;var prevY=(y==1)?0:y-2;var nextY=(y==h)?y-1:y;var offsetYPrev=prevY*w*4;var offsetYNext=nextY*w*4;var x=w;do{var offset=offsetY+(x*4-4);var offsetPrev=offsetYPrev+((x==1)?0:x-2)*4;var offsetNext=offsetYNext+((x==w)?x-1:x)*4;data[offset]=((dataCopy[offsetPrev]
++dataCopy[offset-4]
++dataCopy[offset+4]
++dataCopy[offsetNext])*2
++dataCopy[offset]*4)*weight;data[offset+1]=((dataCopy[offsetPrev+1]
++dataCopy[offset-3]
++dataCopy[offset+5]
++dataCopy[offsetNext+1])*2
++dataCopy[offset+1]*4)*weight;data[offset+2]=((dataCopy[offsetPrev+2]
++dataCopy[offset-2]
++dataCopy[offset+6]
++dataCopy[offsetNext+2])*2
++dataCopy[offset+2]*4)*weight;}while(--x);}while(--y);return true;}else if(Pixastic.Client.isIE()){params.image.style.filter+=" progid:DXImageTransform.Microsoft.Blur(pixelradius=1.5)";if(params.options.fixMargin){params.image.style.marginLeft=(parseInt(params.image.style.marginLeft,10)||0)-2+"px";params.image.style.marginTop=(parseInt(params.image.style.marginTop,10)||0)-2+"px";}
+return true;}},checkSupport:function(){return(Pixastic.Client.hasCanvasImageData()||Pixastic.Client.isIE());}}
+Pixastic.Actions.blurfast={process:function(params){var amount=parseFloat(params.options.amount)||0;var clear=!!(params.options.clear&&params.options.clear!="false");amount=Math.max(0,Math.min(5,amount));if(Pixastic.Client.hasCanvas()){var rect=params.options.rect;var ctx=params.canvas.getContext("2d");ctx.save();ctx.beginPath();ctx.rect(rect.left,rect.top,rect.width,rect.height);ctx.clip();var scale=2;var smallWidth=Math.round(params.width/scale);var smallHeight=Math.round(params.height/scale);var copy=document.createElement("canvas");copy.width=smallWidth;copy.height=smallHeight;var clear=false;var steps=Math.round(amount*20);var copyCtx=copy.getContext("2d");for(var i=0;i<steps;i++){var scaledWidth=Math.max(1,Math.round(smallWidth-i));var scaledHeight=Math.max(1,Math.round(smallHeight-i));copyCtx.clearRect(0,0,smallWidth,smallHeight);copyCtx.drawImage(params.canvas,0,0,params.width,params.height,0,0,scaledWidth,scaledHeight);if(clear)
+ctx.clearRect(rect.left,rect.top,rect.width,rect.height);ctx.drawImage(copy,0,0,scaledWidth,scaledHeight,0,0,params.width,params.height);}
+ctx.restore();params.useData=false;return true;}else if(Pixastic.Client.isIE()){var radius=10*amount;params.image.style.filter+=" progid:DXImageTransform.Microsoft.Blur(pixelradius="+radius+")";if(params.options.fixMargin||1){params.image.style.marginLeft=(parseInt(params.image.style.marginLeft,10)||0)-Math.round(radius)+"px";params.image.style.marginTop=(parseInt(params.image.style.marginTop,10)||0)-Math.round(radius)+"px";}
+return true;}},checkSupport:function(){return(Pixastic.Client.hasCanvas()||Pixastic.Client.isIE());}}
+Pixastic.Actions.coloradjust={process:function(params){var red=parseFloat(params.options.red)||0;var green=parseFloat(params.options.green)||0;var blue=parseFloat(params.options.blue)||0;red=Math.round(red*255);green=Math.round(green*255);blue=Math.round(blue*255);if(Pixastic.Client.hasCanvasImageData()){var data=Pixastic.prepareData(params);var rect=params.options.rect;var p=rect.width*rect.height;var pix=p*4,pix1,pix2;var r,g,b;while(p--){pix-=4;if(red){if((r=data[pix]+red)<0)
+data[pix]=0;else if(r>255)
+data[pix]=255;else
+data[pix]=r;}
+if(green){if((g=data[pix1=pix+1]+green)<0)
+data[pix1]=0;else if(g>255)
+data[pix1]=255;else
+data[pix1]=g;}
+if(blue){if((b=data[pix2=pix+2]+blue)<0)
+data[pix2]=0;else if(b>255)
+data[pix2]=255;else
+data[pix2]=b;}}
+return true;}},checkSupport:function(){return(Pixastic.Client.hasCanvasImageData());}}
+Pixastic.Actions.desaturate={process:function(params){var useAverage=!!(params.options.average&&params.options.average!="false");if(Pixastic.Client.hasCanvasImageData()){var data=Pixastic.prepareData(params);var rect=params.options.rect;var w=rect.width;var h=rect.height;var p=w*h;var pix=p*4,pix1,pix2;if(useAverage){while(p--)
 data[pix-=4]=data[pix1=pix+1]=data[pix2=pix+2]=(data[pix]+data[pix1]+data[pix2])/3}else{while(p--)
 data[pix-=4]=data[pix1=pix+1]=data[pix2=pix+2]=(data[pix]*0.3+data[pix1]*0.59+data[pix2]*0.11);}
 return true;}else if(Pixastic.Client.isIE()){params.image.style.filter+=" gray";return true;}},checkSupport:function(){return(Pixastic.Client.hasCanvasImageData()||Pixastic.Client.isIE());}}
-Pixastic.Actions.hsl={process:function(params){var hue=parseInt(params.options.hue,10)||0;var saturation=(parseInt(params.options.saturation,10)||0)/100;var lightness=(parseInt(params.options.lightness,10)||0)/100;if(saturation<0){var satMul=1+saturation;}else{var satMul=1+saturation*2;}
-hue=(hue%360)/360;var hue6=hue*6;var rgbDiv=1/255;var light255=lightness*255;var lightp1=1+lightness;var lightm1=1-lightness;if(Pixastic.Client.hasCanvasImageData()){var data=Pixastic.prepareData(params);var rect=params.options.rect;var p=rect.width*rect.height;var pix=p*4,pix1=pix+1,pix2=pix+2,pix3=pix+3;while(p--){var r=data[pix-=4];var g=data[pix1=pix+1];var b=data[pix2=pix+2];if(hue!=0||saturation!=0){var vs=r;if(g>vs)vs=g;if(b>vs)vs=b;var ms=r;if(g<ms)ms=g;if(b<ms)ms=b;var vm=(vs-ms);var l=(ms+vs)/510;if(l>0){if(vm>0){if(l<=0.5){var s=vm/(vs+ms)*satMul;if(s>1)s=1;var v=(l*(1+s));}else{var s=vm/(510-vs-ms)*satMul;if(s>1)s=1;var v=(l+s-l*s);}
-if(r==vs){if(g==ms)
-var h=5+((vs-b)/vm)+hue6;else
-var h=1-((vs-g)/vm)+hue6;}else if(g==vs){if(b==ms)
-var h=1+((vs-r)/vm)+hue6;else
-var h=3-((vs-b)/vm)+hue6;}else{if(r==ms)
-var h=3+((vs-g)/vm)+hue6;else
-var h=5-((vs-r)/vm)+hue6;}
-if(h<0)h+=6;if(h>=6)h-=6;var m=(l+l-v);var sextant=h>>0;if(sextant==0){r=v*255;g=(m+((v-m)*(h-sextant)))*255;b=m*255;}else if(sextant==1){r=(v-((v-m)*(h-sextant)))*255;g=v*255;b=m*255;}else if(sextant==2){r=m*255;g=v*255;b=(m+((v-m)*(h-sextant)))*255;}else if(sextant==3){r=m*255;g=(v-((v-m)*(h-sextant)))*255;b=v*255;}else if(sextant==4){r=(m+((v-m)*(h-sextant)))*255;g=m*255;b=v*255;}else if(sextant==5){r=v*255;g=m*255;b=(v-((v-m)*(h-sextant)))*255;}}}}
-if(lightness<0){r*=lightp1;g*=lightp1;b*=lightp1;}else if(lightness>0){r=r*lightm1+light255;g=g*lightm1+light255;b=b*lightm1+light255;}
-if(r<0)
-data[pix]=0
-else if(r>255)
-data[pix]=255
-else
-data[pix]=r;if(g<0)
-data[pix1]=0
-else if(g>255)
-data[pix1]=255
-else
-data[pix1]=g;if(b<0)
-data[pix2]=0
-else if(b>255)
-data[pix2]=255
-else
-data[pix2]=b;}
+Pixastic.Actions.glow={process:function(params){var amount=(parseFloat(params.options.amount)||0);var blurAmount=parseFloat(params.options.radius)||0;amount=Math.min(1,Math.max(0,amount));blurAmount=Math.min(5,Math.max(0,blurAmount));if(Pixastic.Client.hasCanvasImageData()){var rect=params.options.rect;var blurCanvas=document.createElement("canvas");blurCanvas.width=params.width;blurCanvas.height=params.height;var blurCtx=blurCanvas.getContext("2d");blurCtx.drawImage(params.canvas,0,0);var scale=2;var smallWidth=Math.round(params.width/scale);var smallHeight=Math.round(params.height/scale);var copy=document.createElement("canvas");copy.width=smallWidth;copy.height=smallHeight;var clear=true;var steps=Math.round(blurAmount*20);var copyCtx=copy.getContext("2d");for(var i=0;i<steps;i++){var scaledWidth=Math.max(1,Math.round(smallWidth-i));var scaledHeight=Math.max(1,Math.round(smallHeight-i));copyCtx.clearRect(0,0,smallWidth,smallHeight);copyCtx.drawImage(blurCanvas,0,0,params.width,params.height,0,0,scaledWidth,scaledHeight);blurCtx.clearRect(0,0,params.width,params.height);blurCtx.drawImage(copy,0,0,scaledWidth,scaledHeight,0,0,params.width,params.height);}
+var data=Pixastic.prepareData(params);var blurData=Pixastic.prepareData({canvas:blurCanvas,options:params.options});var p=rect.width*rect.height;var pix=p*4,pix1=pix+1,pix2=pix+2,pix3=pix+3;while(p--){if((data[pix-=4]+=amount*blurData[pix])>255)data[pix]=255;if((data[pix1-=4]+=amount*blurData[pix1])>255)data[pix1]=255;if((data[pix2-=4]+=amount*blurData[pix2])>255)data[pix2]=255;}
 return true;}},checkSupport:function(){return Pixastic.Client.hasCanvasImageData();}}
 Pixastic.Actions.mosaic={process:function(params){var blockSize=Math.max(1,parseInt(params.options.blockSize,10));if(Pixastic.Client.hasCanvasImageData()){var rect=params.options.rect;var w=rect.width;var h=rect.height;var w4=w*4;var y=h;var ctx=params.canvas.getContext("2d");var pixel=document.createElement("canvas");pixel.width=pixel.height=1;var pixelCtx=pixel.getContext("2d");var copy=document.createElement("canvas");copy.width=w;copy.height=h;var copyCtx=copy.getContext("2d");copyCtx.drawImage(params.canvas,rect.left,rect.top,w,h,0,0,w,h);for(var y=0;y<h;y+=blockSize){for(var x=0;x<w;x+=blockSize){var blockSizeX=blockSize;var blockSizeY=blockSize;if(blockSizeX+x>w)
 blockSizeX=w-x;if(blockSizeY+y>h)
@@ -94,3 +103,5 @@ amount=parseFloat(params.options.amount)||0;if(typeof params.options.strength!="
 strength=parseFloat(params.options.strength)||0;if(typeof params.options.mono!="undefined")
 mono=!!(params.options.mono&&params.options.mono!="false");amount=Math.max(0,Math.min(1,amount));strength=Math.max(0,Math.min(1,strength));var noise=128*strength;var noise2=noise/2;if(Pixastic.Client.hasCanvasImageData()){var data=Pixastic.prepareData(params);var rect=params.options.rect;var w=rect.width;var h=rect.height;var w4=w*4;var y=h;var random=Math.random;do{var offsetY=(y-1)*w4;var x=w;do{var offset=offsetY+(x-1)*4;if(random()<amount){if(mono){var pixelNoise=-noise2+random()*noise;var r=data[offset]+pixelNoise;var g=data[offset+1]+pixelNoise;var b=data[offset+2]+pixelNoise;}else{var r=data[offset]-noise2+(random()*noise);var g=data[offset+1]-noise2+(random()*noise);var b=data[offset+2]-noise2+(random()*noise);}
 if(r<0)r=0;if(g<0)g=0;if(b<0)b=0;if(r>255)r=255;if(g>255)g=255;if(b>255)b=255;data[offset]=r;data[offset+1]=g;data[offset+2]=b;}}while(--x);}while(--y);return true;}},checkSupport:function(){return Pixastic.Client.hasCanvasImageData();}}
+Pixastic.Actions.posterize={process:function(params){var numLevels=256;if(typeof params.options.levels!="undefined")
+numLevels=parseInt(params.options.levels,10)||1;if(Pixastic.Client.hasCanvasImageData()){var data=Pixastic.prepareData(params);numLevels=Math.max(2,Math.min(256,numLevels));var numAreas=256/numLevels;var numValues=256/(numLevels-1);var rect=params.options.rect;var w=rect.width;var h=rect.height;var w4=w*4;var y=h;do{var offsetY=(y-1)*w4;var x=w;do{var offset=offsetY+(x-1)*4;var r=numValues*((data[offset]/numAreas)>>0);var g=numValues*((data[offset+1]/numAreas)>>0);var b=numValues*((data[offset+2]/numAreas)>>0);if(r>255)r=255;if(g>255)g=255;if(b>255)b=255;data[offset]=r;data[offset+1]=g;data[offset+2]=b;}while(--x);}while(--y);return true;}},checkSupport:function(){return Pixastic.Client.hasCanvasImageData();}}
