@@ -6,6 +6,13 @@
        
        jQuery('body').addClass('type'+getStyleType());
        
+        // Fix all of the links to stay on our domain
+        jQuery('a').each(function()
+        {
+            jQuery(this).attr('href', 'webstagram.php?filter=geocities&url=' + escape(jQuery(this).attr('href')));
+        });
+       
+       
        addHeader();
        addGifs();
        addFooter();

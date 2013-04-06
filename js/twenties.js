@@ -4,6 +4,12 @@
     {
        console.log("Style: Twenties"); 
        
+        // Fix all of the links to stay on our domain
+        jQuery('a').each(function()
+        {
+            jQuery(this).attr('href', 'webstagram.php?filter=twenties&url=' + escape(jQuery(this).attr('href')));
+        });
+       
        replaceText();
     });
     
