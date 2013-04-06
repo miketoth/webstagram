@@ -13,22 +13,20 @@
             <h2>Fast beautiful link sharing</h2>
         </div>
         
-        <div class="container">
-            <form class="form-signup" action="webstagram.php">
+        <form class="form-signup" action="webstagram.php">
+            <div class="container">
                 <label for="url">URL: </label>
                 <input type="text" name="url" id="url" placeholder="Type a URL" />
                 
-                <label for="filter">Select Filter: </label>
+                <label for="filter">Filter: </label>
                 <select name="filter" id="filter">
-                    <option value="normal">Normal</option>
                     <option value="matrix">Matrix</option>
                     <option value="geocities">Geocities</option>
                     <option value="twenties">Twenties</option>
-                    <option value="bootstrap">Boostrap</option>
+                    <option value="disco">Disco</option>
                 </select>
-            </form>
-        </div>
-        
-        <button class="punch" type="submit">Webstagram It!</button>
+            </div>
+            <button class="punch" type="submit">Webstagram It!</button>
+        </form>
 </body>
 </html>

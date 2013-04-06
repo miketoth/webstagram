@@ -12,15 +12,34 @@
     // Grab the data fromt the site
     $returned_content = get_data($url);
     
+    // If the content we get back isn't sufficient, it's almost
+    // certain that they missed the 'www' or just put in a wrong website
+    $threshold = 300;
+    if (strlen($returned_content) < $threshold)
+    {
+        // If we don't have a 'www,' add one and try again
+        if (substr_count($url, 'www.') == 0)
+        {
+            $url = str_replace('http://', 'http://www.', $url);
+            $returned_content = get_data($url);
+            
+            // Do a check after we get it and cross our fingers
+            if (strlen($returned_content) < $threshold)
+                header('location: error.php');
+        }
+        // Otherwise, no luck :(
+        else
+        {
+            header('location: error.php');
+        }
+    }
+    
     // Specify some scripts you need only for certain filters
     $specific = "";
-    if ($filter == 'matrix')
-        $specific = script('js/libs/pixastic.custom.js');
         
-    
-    if ($filter != 'normal')
-        $returned_content = str_replace('</head>', script('js/libs/jquery.min.js') . script('js/libs/class.min.js') . script('js/libs/purl.js') .
-                                                   $specific . script('js/'.$filter.'.js') . sheet('css/'.$filter.'.css') . '</head>', $returned_content);
+    // Add all of our scripts and stylesheets
+    $returned_content = str_replace('</head>', script('js/libs/jquery.min.js') . script('js/libs/class.min.js') . script('js/libs/purl.js') .
+                                               $specific . script('js/'.$filter.'.js') . sheet('css/'.$filter.'.css') . '</head>', $returned_content);
     
     // Print the site to the DOM
     echo $returned_content;
