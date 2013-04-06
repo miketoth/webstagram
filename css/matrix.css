@@ -1,22 +1,42 @@
-html, body
+html, body, img, a, div, input, button, li, h1, h2, h3, h4, h5, h6
 {
     background-color: black !important;
     color: green !important;
     font-family: 'Consolas', 'Courier New', Monospace !important;
 }
 
-img
+html, body
 {
-    border: 2px solid green !important;
+    background-image: url(../img/matrix.jpg) !important;
 }
 
 a
 {
     color: #0f0 !important;
-    background-color: black;
 }
 
-div
+input
 {
-    background-color: black !important;
+    border: 2px solid green !important;
+}
+
+button
+{
+    border: 2px solid green !important;
+}
+
+.floater
+{
+    background: none !important;
+    color: #0d0 !important;
+    font-size: 1.5em;
+    z-index: 1000;
+    text-shadow: 0 0 3px #0f0;
+}
+
+.highlighted
+{
+    font-weight: bold;
+    color: #0f0;
+    text-shadow: 0 0 10px #0f0;
 }
