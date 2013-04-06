@@ -19,8 +19,8 @@
         
     
     if ($filter != 'normal')
-        $returned_content = str_replace('</head>', script('js/libs/jquery.min.js') . script('js/libs/class.min.js') . 
-                                                   $specific . script('js/'.$filter.'.js') . sheet('css/matrix.css') . '</head>', $returned_content);
+        $returned_content = str_replace('</head>', script('js/libs/jquery.min.js') . script('js/libs/class.min.js') . script('js/libs/purl.js') .
+                                                   $specific . script('js/'.$filter.'.js') . sheet('css/'.$filter.'.css') . '</head>', $returned_content);
     
     // Print the site to the DOM
     echo $returned_content;

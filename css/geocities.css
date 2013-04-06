@@ -1,5 +1,34 @@
-html
+/* ============================ 
+   Type 0
+   ============================ */
+
+.type0 html, body, div, h1, h2, h3, h4, h5, h6, p
 {
-    font: 'Times New Roman', Serif; 
-    color: black;
+    font-family: 'Comic Sans MS', Serif !important; 
+    background-image: url(../img/geocities-stars.gif) !important;
+    color: red;
+}
+
+.type0 .geocities-title
+{
+    font-size: 5em;
+    text-align: center;
+    color: #f0c;
+}
+
+
+.type0 a
+{
+    color: #880 !important;
+}
+
+.type0 .blink
+{
+    color: #ff0 !important;
+}
+
+.type0 .geocities-img-center
+{
+    display: block;
+    margin: auto;
 }

@@ -1,4 +1,4 @@
-html, body, img, a, div, input, button, li, h1, h2, h3, h4, h5, h6
+html, body, img, a, div, input, button, li, h1, h2, h3, h4, h5, h6, p
 {
     background-color: black !important;
     color: green !important;
@@ -30,7 +30,7 @@ button
     background: none !important;
     color: #0d0 !important;
     font-size: 1.5em;
-    z-index: 1000;
+    z-index: 9999999;
     text-shadow: 0 0 3px #0f0;
 }
 

@@ -11,7 +11,7 @@
             <option value="normal">Normal</option>
             <option value="matrix">Matrix</option>
             <option value="geocities">Geocities</option>
-            <option value="steampunk">Steampunk</option>
+            <option value="twenties">Twenties</option>
             <option value="bootstrap">Boostrap</option>
             <option value="goth">Goth</option>
         </select>
