@@ -5,7 +5,7 @@
     <script src="http://use.edgefonts.net/lobster.js"></script>
     <script src="http://use.edgefonts.net/ubuntu-condensed.js"></script>
 
-    <link href="css/index.css" rel="stylesheet" />
+    <link href="index.css" rel="stylesheet" />
 </head>
 <body>
         <div class="header-box">

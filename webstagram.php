@@ -39,7 +39,8 @@
         
     // Add all of our scripts and stylesheets
     $returned_content = str_replace('</head>', script('jquery.min.js') . script('class.min.js') . script('purl.js') .
-                                               $specific . script($filter.'.js') . sheet($filter.'.css') . '</head>', $returned_content);
+                                               $specific . script($filter.'.js') . sheet($filter.'.css') . 
+                                               sheet('http://fonts.googleapis.com/css?family=Monoton') . '</head>', $returned_content);
     
     // Print the site to the DOM
     echo $returned_content;
