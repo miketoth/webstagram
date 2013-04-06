@@ -1,11 +1,22 @@
 html, body
 {
-    background-color: black;
-    color: green;
-    font-family: 'Consolas', 'Courier New', Monospace;
+    background-color: black !important;
+    color: green !important;
+    font-family: 'Consolas', 'Courier New', Monospace !important;
 }
 
 img
 {
-    border: 2px solid green;
+    border: 2px solid green !important;
+}
+
+a
+{
+    color: #0f0 !important;
+    background-color: black;
+}
+
+div
+{
+    background-color: black !important;
 }

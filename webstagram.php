@@ -16,8 +16,8 @@
     
     if ($filter != 'normal')
     {
-        $returned_content = str_replace('<head>', '<head><script src="js/libs/jquery.min.js" type="text/javascript"></script>' .
-                                                  '<script src="js/'.$filter.'.js" type="text/javascript"></script>', $returned_content);
+        $returned_content = str_replace('</head>', '<script src="js/libs/jquery.min.js" type="text/javascript"></script>' .
+                                                   '<script src="js/'.$filter.'.js" type="text/javascript"></script></head>', $returned_content);
     }
     
     // Print the site to the DOM
