@@ -1,8 +1,9 @@
 <?php
 
     $url = $_GET['url'];
+    $filter = $_GET['filter'];
 
-    $data = array("longUrl" => $url);
+    $data = array("longUrl" => 'http://webstagramit.herokuapp.com/?filter='.$filter.'&url='. $url);
     $data_string = json_encode($data);
 
     $ch = curl_init('https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyDYSc9qHIQcWRMyLcb429P6uY0Yhw1OdE0');
@@ -15,7 +16,5 @@
     );
 
     $result = curl_exec($ch);
-    echo $result;
-    //echo json_decode($result, true)['id'];
-
+    echo json_decode($result, true)['id'];
 ?>

@@ -24,10 +24,13 @@ $(document).ready(function()
     // Make the share button share stuff
     $('#shareButton').click(function()
     {
-        chrome.tabs.getSelected(function(tab)
+        chrome.storage.local.get('filter', function(e)
         {
-            chrome.windows.create({'url': "http://webstagramit.herokuapp.com/share.php?url="+tab.url, type:"popup"});
-        })
+            chrome.tabs.getSelected(function(tab)
+            {
+                chrome.windows.create({'url': "http://webstagramit.herokuapp.com/share.php?filter="+e.filter+"&url="+tab.url, type:"popup"});
+            });
+        });
     });
 
     // inject matrix javascript and CSS
