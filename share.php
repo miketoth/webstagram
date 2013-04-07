@@ -2,7 +2,7 @@
 
     $url = $_GET['url'];
     echo $url;
-/*
+
     $data = array("longURL" => $url);
     $data_string = json_encode($data);
 
@@ -16,7 +16,7 @@
     );
 
     $result = curl_exec($ch);
-
+/*
     echo json_decode($result)['id'];
 */
 ?>
