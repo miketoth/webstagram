@@ -23,6 +23,12 @@ chrome.runtime.onConnect.addListener(function(port)
 
 $(document).ready(function()
 {
+    $('#shareButton').click(function()
+    {
+        var url = document.location.href;
+        chrome.windows.create({url: "http://webstagramit.herokuapp.com/share.php?url="+url, type:"popup"});
+    });
+
     // inject matrix javascript and CSS
     $('#matrixStyle').click(function()
     {
