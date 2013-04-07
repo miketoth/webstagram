@@ -26,7 +26,6 @@ $(document).ready(function()
     // inject matrix javascript and CSS
     $('#matrixStyle').click(function()
     {
-        console.log("Button pressed.");
         setFilter('matrix');
     });
 
@@ -91,6 +90,7 @@ function setFilter(f)
 function loadFilter(c, j)
 {
     console.log("Filter Loading: " + c + " " + j);
+
     // first CSS
     chrome.tabs.insertCSS(null, { 'file' : c }, function()
     {

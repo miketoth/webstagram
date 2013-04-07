@@ -1,6 +1,6 @@
 html, body, img, a, div, input, button, li, h1, h2, h3, h4, h5, h6, p, span
 {
-    background-color: black !important;
+    background-color: black;
     
 }
 
@@ -11,13 +11,13 @@ html, body, img, a, div, input, button, li, p, span
 
 h1, h2, h3, h4, h5, h6
 {
-    font-family: 'Monoton', cursive !important;
+    font-family: 'Impact', 'Arial', sans-serif !important;
     font-weight: normal !important;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
 {
-    font-family: 'Monoton', cursive !important;
+    font-family: 'Impact', 'Arial', sans-serif !important;
     font-weight: normal !important;
 }
 
