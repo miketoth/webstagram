@@ -54,6 +54,13 @@ h2
     margin-left: 18px;
 }
 
+p, a
+{
+    font-size: 3em;
+    font-family: ubuntu-condensed, Serif;
+}
+
+
 select, option, label
 {
     font-size: 3em;

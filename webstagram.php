@@ -6,7 +6,7 @@
     $filter = $_GET['filter'];
     
     // Append the proper beginnings to it
-    if (substr_count($url, 'http://') == 0)
+    if (substr_count($url, 'http://') == 0 || substr_count($url, 'https://') == 0)
         $url = 'http://' . $url;
     
     // Grab the data fromt the site
@@ -24,14 +24,14 @@
             $returned_content = get_data($url);
             
             // Do a check after we get it and cross our fingers
-//            if (strlen($returned_content) < $threshold)
-//                header('location: error.php');
+            if (strlen($returned_content) < $threshold)
+                header('location: error.php');
         }
         // Otherwise, no luck :(
-//        else
-//        {
-//            header('location: error.php');
-//        }
+        else
+        {
+            header('location: error.php');
+        }
     }
     
     // Specify some scripts you need only for certain filters
