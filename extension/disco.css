@@ -1,6 +1,24 @@
-html, body, input, div, p
+html, body, img, a, div, input, button, li, h1, h2, h3, h4, h5, h6, p, span
 {
-    background-color: black;
+    background-color: black !important;
+    
+}
+
+html, body, img, a, div, input, button, li, p, span
+{
+    font-family: Arial, sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    font-family: 'Monoton', cursive !important;
+    font-weight: normal !important;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
+{
+    font-family: 'Monoton', cursive !important;
+    font-weight: normal !important;
 }
 
 /*Red*/
@@ -81,4 +99,8 @@ html, body, input, div, p
 }
 
 
+img
+{
+    -webkit-filter: saturate(5);
+}
 

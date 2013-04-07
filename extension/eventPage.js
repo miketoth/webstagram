@@ -45,6 +45,11 @@ $(document).ready(function()
     {
         setFilter('disco');
     });
+
+    $("#noStyle").click(function()
+    {
+        setFilter('none');
+    });
 })
 
 function init()

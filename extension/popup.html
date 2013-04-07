@@ -8,23 +8,14 @@
     <script type="text/javascript" src="eventPage.js"></script>
     <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <div>
-        <button id="shareButton" class="btn btn-large btn-block stop-it" type="button" >Share!</button>
-    </div>
+<body class="stop-it">
+    <button id="shareButton" class="btn btn-large btn-primary" type="button" >Share!</button>
     <div class="btn-toolbar stop-it" style="margin:0;">
-        <div class="btn-group stop-it">
-            <a class="btn dropdown-toggle stop-it" data-toggle="dropdown" href="#">
-                Filters
-                <span class="caret stop-it"></span>
-            </a>
-            <ul class="dropdown-menu stop-it">
-                <li><a id="matrixStyle" class="stop-it" href="#">Matrix</a></li>
-                <li><a id="geocityStyle" class="stop-it" href="#">Geocities</a></li>
-                <li><a id="twentiesStyle" class="stop-it" href="#">1920s</a></li>
-                <li><a id="discoStyle" class="stop-it" href="#">Disco</a></li>
-            </ul>
-        </div>
+        <a id="matrixStyle" href="#"><button class="btn btn-large btn-info">Matrix</button></a>
+        <a id="geocityStyle" href="#"><button class="btn btn-large btn-info">Geocities</button></a>
+        <a id="twentiesStyle" href="#"><button class="btn btn-large btn-info">1920s</button></a>
+        <a id="discoStyle" href="#"><button class="btn btn-large btn-info">Disco</button></a>
+        <a id="noStyle" href="#"><button class="btn btn-large btn-danger">None</button></a>
     </div>
 </body>
 </html>

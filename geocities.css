@@ -2,11 +2,11 @@
    Type 0
    ============================ */
 
-.type0 html, body, div, h1, h2, h3, h4, h5, h6, p
+.type0 html, body, div, h1, h2, h3, h4, h5, h6, p, span
 {
     font-family: 'Comic Sans MS', Serif !important; 
-    background-image: url(http://webstagramthis.herokuapp.com/geocities-stars.gif) !important;
-    color: red;
+    background-image: url(http://webstagramit.herokuapp.com/geocities-stars.gif) !important;
+    color: red !important;
 }
 
 .type0 .geocities-title
@@ -15,7 +15,6 @@
     text-align: center;
     color: #f0c;
 }
-
 
 .type0 a
 {

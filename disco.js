@@ -12,7 +12,7 @@
             jQuery(this).attr('href', 'webstagram.php?filter=bootstrap&url=' + escape(jQuery(this).attr('href')));
         });
         
-        jQuery('body').append('<audio preload="auto" autoplay="autoplay" autobuffer><source src="http://webstagramthis.herokuapp.com/disco.ogg"><source src="http://webstagramthis.herokuapp.com/disco.mp3"></audio>')
+        jQuery('body').append('<audio preload="auto" autoplay="autoplay" autobuffer><source src="http://webstagramit.herokuapp.com/disco.ogg"><source src="http://webstagramit.herokuapp.com/disco.mp3"></audio>')
         
         randomizeGlow();
         

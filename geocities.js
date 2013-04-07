@@ -58,7 +58,6 @@
         if (getStyleType() == 0)
         {
             jQuery('a').toggleClass('blink');
-            console.log("hello?")
         }
     }
 })();

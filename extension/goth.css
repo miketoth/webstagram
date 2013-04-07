@@ -1,9 +1,10 @@
-a
+html, body
 {
- color: #A43C23 !important;   
+    background-color: black;
+    color: red;
 }
 
-body
+[div]
 {
-    background-image:url('chrome-extension://ejlalognjbnmlbdoclcmjbjdogpmekjj/background_swag.png');
+    color: red;
 }

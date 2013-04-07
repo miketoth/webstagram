@@ -7,7 +7,7 @@
        jQuery('body').addClass('type'+getStyleType());
        
         // Fix all of the links to stay on our domain
-        jQuery('a:not(.stop-it)').each(function()
+        jQuery('body:not(.stop-it) a:not(.stop-it)').each(function()
         {
             jQuery(this).attr('href', 'webstagram.php?filter=geocities&url=' + escape(jQuery(this).attr('href')));
         });
@@ -39,7 +39,7 @@
     
     function addHeader()
     {
-       jQuery('body').prepend('<h1 class="geocities-title">Welcome to ' + $.url().param('url') + '!!!</h1>');
+       jQuery('body').prepend('<h1 class="geocities-title">Welcome to ' + document.location.hostname + '!!!</h1>');
     }
     
     function addGifs()
@@ -58,7 +58,6 @@
         if (getStyleType() == 0)
         {
             jQuery('a').toggleClass('blink');
-            console.log("hello?")
         }
     }
 })();

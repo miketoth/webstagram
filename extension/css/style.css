@@ -8,3 +8,12 @@ body
     height: auto;
     background-color: aliceblue;
 }
+
+button.btn-info, button.btn-primary, button.btn-danger
+{
+    width: 100%;
+    margin: 0px;
+    margin-top: 5px;
+    color: white !important
+    display: block;
+}
