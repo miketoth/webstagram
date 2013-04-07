@@ -18,5 +18,5 @@
     $result = curl_exec($ch);
     echo $result;
     $decoded = json_encode($result, true);
-    echo $decoded['id'];
+    echo $decoded;
 ?>
