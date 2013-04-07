@@ -60,6 +60,12 @@ p
     font-family: ubuntu-condensed, Serif;
 }
 
+a
+{
+    font-size: 1em;
+    text-decoration: none;
+}
+
 
 select, option, label
 {

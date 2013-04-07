@@ -28,7 +28,12 @@ $(document).ready(function()
         {
             chrome.tabs.getSelected(function(tab)
             {
-                chrome.windows.create({'url': "http://webstagramit.herokuapp.com/share.php?filter="+e.filter+"&url="+tab.url, type:"popup"});
+                chrome.windows.create(
+                    {
+                        'url': "http://webstagramit.herokuapp.com/share.php?filter="+e.filter+"&url="+tab.url,
+                        'type':"popup",
+                        'width':760
+                    });
             });
         });
     });
