@@ -1,9 +1,8 @@
 <?php
 
     $url = $_GET['url'];
-    echo $url;
 
-    $data = array("longURL" => $url);
+    $data = array("longUrl" => $url);
     $data_string = json_encode($data);
 
     $ch = curl_init('https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyDYSc9qHIQcWRMyLcb429P6uY0Yhw1OdE0');
