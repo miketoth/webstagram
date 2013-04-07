@@ -16,7 +16,8 @@
             "js" : ["js/jquery-1.9.1.min.js",
                     "class.min.js",
                     "purl.js",
-                    "jquery.min.js"],
+                    "jquery.min.js",
+                    "content_script.js"],
             "run_at": "document_idle"
         }
     ],
@@ -26,9 +27,8 @@
     },
 
     "background": {
-        "background_page": "eventPage.js",
         "scripts": ["eventPage.js"]
-    },
+      },
 
     "web_accessible_resources": [
         "background_swag.png",
