@@ -56,9 +56,11 @@ h2
 
 p, a
 {
-    font-size: 3em;
     font-family: ubuntu-condensed, Serif;
 }
+
+p { font-size: 3em; }
+a { font-size: 2em; }
 
 
 select, option, label

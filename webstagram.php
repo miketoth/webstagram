@@ -6,7 +6,7 @@
     $filter = $_GET['filter'];
     
     // Append the proper beginnings to it
-    if (substr_count($url, 'http://') == 0 || substr_count($url, 'https://') == 0)
+    if (substr_count($url, 'http://') == 0 && substr_count($url, 'https://') == 0)
         $url = 'http://' . $url;
     
     // Grab the data fromt the site
