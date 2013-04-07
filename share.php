@@ -16,7 +16,7 @@
     );
 
     $result = curl_exec($ch);
-    $decoded = json_encode($result, true);
+    $decoded = json_decode($result, true);
     if(isset($decoded['id']))
         echo $decoded['id'];
 ?>
