@@ -1,12 +1,10 @@
 // ok this file needs a lot of work.
 
-var savedPort = null;
 chrome.runtime.onConnect.addListener(function(port)
 {
    console.assert(port.name == "webstagram");
     port.onMessage.addListener(function(msg)
     {
-       savedPort = port;
        if (msg.message == "loaded")
             init();
     });
@@ -23,10 +21,13 @@ chrome.runtime.onConnect.addListener(function(port)
 
 $(document).ready(function()
 {
+    // Make the share button share stuff
     $('#shareButton').click(function()
     {
-        var url = document.location.href;
-        chrome.windows.create({url: "http://webstagramit.herokuapp.com/share.php?url="+url, type:"popup"});
+        chrome.tabs.getSelected(function(tab)
+        {
+            chrome.windows.create({'url': "http://webstagramit.herokuapp.com/share.php?url="+tab.url, type:"popup"});
+        })
     });
 
     // inject matrix javascript and CSS

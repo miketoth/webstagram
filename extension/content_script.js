@@ -3,7 +3,7 @@ console.log("I have loaded!");
 $('body').addClass('stop-it');
 
 var port = chrome.runtime.connect({name: "webstagram"});
-port.postMessage({message: "loaded"});
+port.postMessage({'message': "loaded" });
 //
 //chrome.runtime.sendMessage({message: "loaded"}, function(response)
 //{
