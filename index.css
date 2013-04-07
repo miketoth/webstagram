@@ -21,8 +21,9 @@ html, body
     font-style: italic;
     width: 700px;
     margin: auto;
-    text-align: center
+    text-align: center;
     margin-top: 20px;
+    text-color: gray;
 }
 
 .header-box
