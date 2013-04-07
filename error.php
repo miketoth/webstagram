@@ -22,5 +22,10 @@
         </p>
     </div>
 
+    <div class="footer">
+        Note: Webstagram doesn't work well on every site, particularly those with dynamic content.
+        If you want a better experience with Webstagram, try our Chrome extension!
+    </div>
+
 </body>
 </html>
