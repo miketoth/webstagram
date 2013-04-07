@@ -16,7 +16,7 @@
     );
 
     $result = curl_exec($ch);
-/*
-    echo json_decode($result)['id'];
-*/
+
+    echo json_decode($result, true)['id'];
+
 ?>
