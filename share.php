@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 
     $url = $_GET['url'];
@@ -17,6 +18,27 @@
 
     $result = curl_exec($ch);
     $decoded = json_decode($result, true);
-    if(isset($decoded['id']))
-        echo $decoded['id'];
+    $linkURL = $decoded['id'];
 ?>
+
+<html>
+<head>
+    <title>Webstagram it.</title>
+    <link href="index.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="header-box">
+        <h1>Webstragram.</h1>
+        <h2>Fast beautiful link sharing</h2>
+    </div>
+
+    <div class="container">
+        <p>Share this link with your friends.</p>
+        <p>
+            <a href="<?php print($linkURL); ?>"><?php print($linkURL); ?></a>
+        </p>
+    </div>
+</body>
+
+</html>

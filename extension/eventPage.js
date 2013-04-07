@@ -102,12 +102,24 @@ function loadFilter(c, j)
     console.log("Filter Loading: " + c + " " + j);
 
     // first CSS
-    chrome.tabs.insertCSS(null, { 'file' : c }, function()
+    chrome.tabs.getSelected(function(tab)
     {
-        // then javascript
-        chrome.tabs.executeScript(null, { 'file' : j}, function()
+        if (tab.url.indexOf('webstagramit.herokuapp') < 0)
         {
-            console.log("Script Executed");
-        });
+            chrome.tabs.insertCSS(null, { 'file' : c }, function()
+            {
+                // then javascript
+                chrome.tabs.executeScript(null, { 'file' : j}, function()
+                {
+                    console.log("Script Executed");
+                });
+            });
+        }
+        else
+        {
+            console.log("Filter NOT applied. We're on a Webstagram domain.");
+        }
     });
+
 }
+

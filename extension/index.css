@@ -32,6 +32,13 @@ input[type="text"]
     width: auto;
 }
 
+a, p
+{
+    font-size: 3em;
+    font-family: ubuntu-condensed, Serif;
+}
+
+
 label
 {
     display: inline;
@@ -66,7 +73,6 @@ select, option, label
 select
 {
     border-bottom: 2px solid black;
-
 }
 
 button.punch
